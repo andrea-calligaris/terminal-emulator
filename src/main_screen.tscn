@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://n3rrkfwj77qt"]
+
+[ext_resource type="PackedScene" uid="uid://brxeuebe2s033" path="res://terminal/Terminal.tscn" id="1_bgs33"]
+
+[node name="MainScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SomeOtherWindow" type="PanelContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+focus_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/SomeOtherWindow"]
+layout_mode = 2
+text = "Click here to change focus (notice the caret)."
+
+[node name="Terminal" parent="VBoxContainer" instance=ExtResource("1_bgs33")]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2

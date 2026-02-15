@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://brxeuebe2s033"]
+
+[ext_resource type="Script" uid="uid://imc5q8jsr4ck" path="res://terminal/terminal.gd" id="1_fvjlm"]
+
+[node name="Terminal" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -141.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_fvjlm")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 2
+
+[node name="Display" type="PanelContainer" parent="ScrollContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 2
+mouse_filter = 1
+
+[node name="PopupMenu" type="PopupMenu" parent="."]
+oversampling_override = 1.0
+
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
+[connection signal="resized" from="ScrollContainer" to="." method="_on_scroll_container_resized"]
+[connection signal="draw" from="ScrollContainer/Display" to="." method="_on_display_draw"]
+[connection signal="focus_entered" from="ScrollContainer/Display" to="." method="_on_display_focus_entered"]
+[connection signal="focus_exited" from="ScrollContainer/Display" to="." method="_on_display_focus_exited"]
+[connection signal="gui_input" from="ScrollContainer/Display" to="." method="_on_display_gui_input"]
